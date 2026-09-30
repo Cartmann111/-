@@ -8,7 +8,7 @@
 <body>
   <main class="app">
   <header><h1>카트먼 <span>때리기</span></h1><p>눌러서 점수를 모으고 실시간으로 겨뤄 보세요.</p></header>
-  <section id="entry" class="panel entry"><label for="nickname">닉네임</label><div class="entry-row"><input id="nickname" maxlength="16" autocomplete="nickname" placeholder="닉네임 입력"><button id="join">게임 시작</button></div><small id="entry-message">닉네임은 16자까지 입력할 수 있어요.</small></section>
+  <section id="entry" class="panel entry"><label for="nickname">닉네임</label><div class="entry-row"><input id="nickname" maxlength="16" autocomplete="nickname" placeholder="닉네임 입력"><button id="join">온라인 시작</button></div><small id="entry-message">온라인 점수 저장을 위해 Firebase 설정이 필요합니다.</small></section>
     <section id="game" class="game-grid" hidden>
       <div class="panel play-panel">
         <div class="player-line"><span id="player-name"></span><span id="connection">연결 중…</span></div>
@@ -21,7 +21,7 @@
       </div>
       <aside class="panel leaderboard"><div class="board-heading"><div><span class="eyebrow">LIVE BATTLE</span><h2>실시간 랭킹</h2></div><span class="live-dot">LIVE</span></div><ol id="ranking"></ol><p id="rank-empty">참가자를 기다리는 중…</p><small>접속 중인 플레이어 점수만 표시됩니다.</small></aside>
     </section>
-    <footer>점수와 도우미는 접속 중에만 랭킹에 표시되며, 나가면 초기화됩니다.</footer>
+    <footer>점수 기록은 저장되며, 도우미는 온라인 상태에서 3초마다 점수를 얻습니다.</footer>
   </main>
   <audio id="click-audio" src="./click.mp3" preload="auto"></audio>
   <script src="./firebase-config.js"></script><script type="module" src="./game.js"></script>
