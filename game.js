@@ -57,12 +57,12 @@ async function joinGame() {
     await onDisconnect(nameRef).remove();
     if(previous.nameKey && previous.nameKey!==key) await remove(ref(db,`names/${previous.nameKey}`));
     await set(playerRef,{name:playerName,nameKey:key,score,helpers,uid,updatedAt:Date.now()});
-    onValue(ref(db,'players'),data=>renderBoard(data.val() || {}),error=>{ $('connection').textContent='연결 오류'; console.error(error); });
+    onValue(ref(db,'players'),data=>renderBoard(data.val() || {}),error=>{ $('connection').textContent=error.code || '연결 오류'; $('entry-message').textContent=`점수 읽기 실패 [${error.code || 'unknown'}]: ${error.message || error}`; console.error(error); });
     $('connection').textContent='실시간 온라인';
     joined=true; $('player-name').textContent=playerName; $('entry').hidden=true; $('game').hidden=false; paintScore(score); paintHelpers(helpers);
     helperTimer=setInterval(()=>{ if(!joined||helpers<1)return; score+=helpers; paintScore(score); syncPlayer(); },3000);
   } catch (error) {
-    console.error(error); $('entry-message').textContent=error.message==='이미 사용 중인 닉네임입니다.'?error.message:'온라인 연결 실패: Firebase Authentication, 데이터베이스 URL, 보안 규칙을 확인해 주세요.';
+    console.error(error); $('entry-message').textContent=error.message==='이미 사용 중인 닉네임입니다.'?error.message:`온라인 연결 실패 [${error.code || error.name || 'unknown'}]: ${error.message || error}`;
     $('entry-message').style.color='#ff7180'; $('join').disabled=false;
   }
 }
