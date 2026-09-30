@@ -4,9 +4,9 @@ GitHub Pages에서 제공하는 정적 사이트입니다. Node.js 서버 없이
 
 ## GitHub Pages 공개
 
-1. 저장소에 프로젝트 파일을 올립니다. `docs/` 폴더와 그 안의 `index.html`이 저장소 최상위에 있어야 합니다.
+1. 압축을 풀고 이 폴더 안의 파일들을 저장소 최상위에 올립니다. `index.html`은 저장소 최상위에 있어야 합니다.
 2. GitHub 저장소 **Settings → Pages → Build and deployment**에서 `Deploy from a branch`를 선택합니다.
-3. 브랜치를 `main`, 폴더를 `/docs`로 선택해 저장합니다.
+3. 브랜치를 `main`, 폴더를 `/(root)`로 선택해 저장합니다.
 4. 잠시 기다린 뒤 Pages 설정에 표시되는 사이트 주소를 엽니다. 프로젝트 사이트 주소는 보통 `https://<사용자명>.github.io/<저장소명>/` 형식입니다.
 
 ## Firebase로 실시간 대전 켜기
@@ -16,7 +16,7 @@ GitHub Pages에서 제공하는 정적 사이트입니다. Node.js 서버 없이
 1. Firebase Console에서 프로젝트를 만들고 **웹 앱**을 추가합니다.
 2. **Authentication → Sign-in method**에서 **Anonymous** 로그인을 켭니다.
 3. **Realtime Database**를 만들고 데이터베이스 URL을 복사합니다.
-4. `docs/firebase-config.js`의 `YOUR_...` 값을 Firebase 웹 앱 설정값으로 바꿉니다. `databaseURL`에는 Realtime Database URL을 넣습니다.
+4. `firebase-config.js`의 `YOUR_...` 값을 Firebase 웹 앱 설정값으로 바꿉니다. `databaseURL`에는 Realtime Database URL을 넣습니다.
 5. Realtime Database **Rules**에 아래 규칙을 저장합니다.
 6. 변경한 파일을 저장소의 `main` 브랜치에 올리고, Pages 사이트를 새로고침합니다.
 
@@ -56,13 +56,13 @@ GitHub Pages에서 제공하는 정적 사이트입니다. Node.js 서버 없이
 
 - 이 구성은 가벼운 친구 간 점수 놀이용입니다. 브라우저가 자기 점수를 직접 기록하므로 개발자 도구를 사용하는 이용자는 점수를 조작할 수 있습니다. 공정한 공개 대회에는 서버에서 점수를 검증하는 Cloud Functions 같은 서버 측 로직이 필요합니다.
 - Firebase 규칙은 각 익명 사용자가 자기 플레이어 항목만 변경하도록 제한하지만, 점수 계산 자체를 신뢰할 수 있게 만들어 주지는 않습니다.
-- 효과음 파일 `docs/assets/click.mp3`는 제공 파일에서 찾지 못했습니다. 해당 파일을 추가하면 클릭 시 재생됩니다.
+- 효과음 파일 `click.mp3`는 제공 파일에서 찾지 못했습니다. 해당 파일을 추가하면 클릭 시 재생됩니다.
 - South Park 캐릭터 이미지 사용 권리는 프로젝트에 포함되지 않습니다. 공개 사이트에 배포하기 전에 사용 권리를 확인하세요.
 
 ## 파일 위치
 
-- 사이트 화면: `docs/index.html`, `docs/style.css`
-- 클릭 및 Firebase 연결: `docs/game.js`
-- Firebase 설정: `docs/firebase-config.js`
+- 사이트 화면: `index.html`, `style.css`
+- 클릭 및 Firebase 연결: `game.js`
+- Firebase 설정: `firebase-config.js`
 - Firebase 보안 규칙 샘플: `database.rules.json`
-- 이미지: `docs/assets/`
+- 이미지: `normal.png`, `hover.png`, `click.png`, `helper.jpg`
